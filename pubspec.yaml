@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.1
+  google_maps_flutter:
 
 dev_dependencies:
   flutter_test:

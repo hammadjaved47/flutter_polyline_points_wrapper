@@ -1,6 +1,7 @@
 library flutter_polyline_points_wrapper;
 
 import 'package:flutter_polyline_points_wrapper/flutter_polyline_points_wrapper.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 export 'src/utils/request_enums.dart';
 export 'src/utils/polyline_waypoint.dart';
@@ -14,7 +15,7 @@ class PolylinePoints {
   /// Get the list of coordinates between two geographical positions
   /// which can be used to draw polyline between this two positions
   ///
-  Future<PolylineResult> getRouteBetweenCoordinates(
+  Future<List<LatLng>> getRouteBetweenCoordinates(
       String googleApiKey, PointLatLng origin, PointLatLng destination,
       {TravelMode travelMode = TravelMode.driving,
       List<PolylineWayPoint> wayPoints = const [],
@@ -22,7 +23,9 @@ class PolylinePoints {
       bool avoidTolls = false,
       bool avoidFerries = true,
       bool optimizeWaypoints = false}) async {
-    return await util.getRouteBetweenCoordinates(
+
+    List<LatLng> polylineCoordinates = [];
+    PolylineResult result = await util.getRouteBetweenCoordinates(
         googleApiKey,
         origin,
         destination,
@@ -32,6 +35,11 @@ class PolylinePoints {
         avoidTolls,
         avoidFerries,
         optimizeWaypoints);
+
+    result.points.forEach((PointLatLng point) {
+      polylineCoordinates.add(LatLng(point.latitude, point.longitude));
+    });
+    return polylineCoordinates;
   }
 
   /// Decode and encoded google polyline
