@@ -1,10 +1,6 @@
 library flutter_polyline_points_wrapper;
 
-import 'package:flutter_polyline_points/src/utils/polyline_result.dart';
-import 'package:flutter_polyline_points/src/utils/polyline_waypoint.dart';
-import 'package:flutter_polyline_points/src/utils/request_enums.dart';
-import 'src/PointLatLng.dart';
-import 'src/network_util.dart';
+import 'package:flutter_polyline_points_wrapper/flutter_polyline_points_wrapper.dart';
 
 export 'src/utils/request_enums.dart';
 export 'src/utils/polyline_waypoint.dart';
