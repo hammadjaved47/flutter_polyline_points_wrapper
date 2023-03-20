@@ -27,14 +27,12 @@ contains the status of the api, the errorMessage, and the list of decoded points
 PolylinePoints polylinePoints = PolylinePoints();
 PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(googleAPiKey,
         _originLatitude, _originLongitude, _destLatitude, _destLongitude);
-print(result.points);
 ```
 
 ## Second method
 Decode an encoded google polyline string e.g _p~iF~ps|U_ulLnnqC_mqNvxq`@
 ```dart
 List<PointLatLng> result = polylinePoints.decodePolyline("_p~iF~ps|U_ulLnnqC_mqNvxq`@");
-print(result);
 ``` 
 
 See the example directory for a complete sample app
