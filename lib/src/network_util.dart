@@ -54,8 +54,14 @@ class NetworkUtil {
           parsedJson["routes"] != null &&
           parsedJson["routes"].isNotEmpty) {
 
-        result.points = decodeEncodedPolyline(
-            parsedJson["routes"][0]["overview_polyline"]["points"]);
+          var directionsLength = parsedJson["routes"][0]['legs'][0]["steps"].length;
+          var steps = parsedJson["routes"][0]['legs'][0]["steps"];
+          for(int i = 0; i < directionsLength!; i++){
+            data.addAll(decodeEncodedPolyline(
+                steps![i]["polyline"]["points"]));
+
+          }
+          result.points = data;
 
       } else {
         result.errorMessage = parsedJson["error_message"];
