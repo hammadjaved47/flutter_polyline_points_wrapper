@@ -1,10 +1,23 @@
 # flutter_polyline_points_wrapper
-A flutter plugin that decodes encoded google polyline string into list of geo-coordinates suitable for showing route/polyline on maps
+A flutter plugin that decodes encoded google polyline string into list of geo-coordinates suitable for showing route/polyline on maps. We have improved the accuracy for polyline points which was previously breaking up on longer routes and used to go over the building without taking major turns.
+<br><br>
 
+## Before
 <div style="text-align: center"><table><tr>
   <td style="text-align: center">
-  <a href="https://raw.githubusercontent.com/Dammyololade/flutter_polyline_points/master/poly.jpeg">
-    <img src="https://raw.githubusercontent.com/Dammyololade/flutter_polyline_points/master/poly.jpeg" width="200"/></a>
+  <a href="https://raw.githubusercontent.com/hammadjaved47/flutter_polyline_points_wrapper/main/before.png">
+    <img src="https://raw.githubusercontent.com/hammadjaved47/flutter_polyline_points_wrapper/main/before.png" width="200"/></a>
+</td>
+</tr></table></div>
+
+
+<br><br>
+
+## Now - Updated
+<div style="text-align: center"><table><tr>
+  <td style="text-align: center">
+  <a href="https://raw.githubusercontent.com/hammadjaved47/flutter_polyline_points_wrapper/main/after.png">
+    <img src="https://raw.githubusercontent.com/hammadjaved47/flutter_polyline_points_wrapper/main/after.png" width="200"/></a>
 </td>
 </tr></table></div>
 
@@ -27,12 +40,14 @@ contains the status of the api, the errorMessage, and the list of decoded points
 PolylinePoints polylinePoints = PolylinePoints();
 PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(googleAPiKey,
         _originLatitude, _originLongitude, _destLatitude, _destLongitude);
+print(result.points);
 ```
 
 ## Second method
 Decode an encoded google polyline string e.g _p~iF~ps|U_ulLnnqC_mqNvxq`@
 ```dart
 List<PointLatLng> result = polylinePoints.decodePolyline("_p~iF~ps|U_ulLnnqC_mqNvxq`@");
+print(result);
 ``` 
 
 See the example directory for a complete sample app
@@ -40,3 +55,4 @@ See the example directory for a complete sample app
 ## Hint
 kindly ensure you use a valid google api key,  
 [If you need help generating api key for your project click this link](https://developers.google.com/maps/documentation/directions/get-api-key)
+
